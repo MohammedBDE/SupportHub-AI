@@ -1,5 +1,12 @@
 # AI Support Ticket System
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Claude API](https://img.shields.io/badge/AI-Claude%20API-D97757?logo=anthropic&logoColor=white)](https://www.anthropic.com/)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/MohammedBDE/SupportHub-AI)
+
 A support desk where the assistant reads every incoming ticket, classifies it, retrieves the relevant
 internal documentation, and drafts a grounded reply that a human agent edits before sending.
 
@@ -223,9 +230,7 @@ be needed for anything customer-facing.
 **Passwords use bcrypt with 12 rounds**, and login compares against a placeholder hash when the email
 does not exist, so response time does not reveal which addresses are registered.
 
-More detail, including the alternatives considered, is in [`docs/decisions.md`](docs/decisions.md)
-(Arabic). A walkthrough of the whole system, written as interview preparation, is in
-[`docs/project-explained-ar.md`](docs/project-explained-ar.md) (Arabic).
+More detail, including the alternatives considered, is in [`docs/decisions.md`](docs/decisions.md) (Arabic).
 
 ---
 
