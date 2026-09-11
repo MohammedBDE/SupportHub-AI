@@ -230,7 +230,6 @@ be needed for anything customer-facing.
 **Passwords use bcrypt with 12 rounds**, and login compares against a placeholder hash when the email
 does not exist, so response time does not reveal which addresses are registered.
 
-More detail, including the alternatives considered, is in [`docs/decisions.md`](docs/decisions.md) (Arabic).
 
 ---
 
