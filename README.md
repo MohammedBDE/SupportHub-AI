@@ -57,22 +57,22 @@ System records whether the draft was sent unchanged   →  dashboard metric
 The draft is grounded in one knowledge base article, named under "Grounded in", and the form warns
 that sending it unchanged will be recorded as such.
 
-![Ticket detail with a grounded AI draft](docs/screenshots/03-ticket-detail.png)
+<img src="docs/screenshots/03-ticket-detail.png" alt="Ticket detail with a grounded AI draft" width="850">
 
 **Ticket list — filters, search, pagination, and the classification the assistant assigned.**
 
-![Ticket list](docs/screenshots/02-tickets.png)
+<img src="docs/screenshots/02-tickets.png" alt="Ticket list" width="850">
 
 **Dashboard — response times and the AI acceptance rate that says whether the assistant earns its cost.**
 
-![Analytics dashboard](docs/screenshots/04-dashboard.png)
+<img src="docs/screenshots/04-dashboard.png" alt="Analytics dashboard" width="850">
 
 <details>
 <summary>Knowledge base and sign in</summary>
 
-![Knowledge base](docs/screenshots/05-knowledge-base.png)
+<img src="docs/screenshots/05-knowledge-base.png" alt="Knowledge base" width="850">
 
-![Sign in](docs/screenshots/01-login.png)
+<img src="docs/screenshots/01-login.png" alt="Sign in" width="850">
 
 </details>
 
