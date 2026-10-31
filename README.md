@@ -6,6 +6,7 @@
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Claude API](https://img.shields.io/badge/AI-Claude%20API-D97757?logo=anthropic&logoColor=white)](https://www.anthropic.com/)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/MohammedBDE/SupportHub-AI)
+[![CI](https://github.com/MohammedBDE/SupportHub-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/MohammedBDE/SupportHub-AI/actions/workflows/ci.yml)
 
 A support desk where the assistant reads every incoming ticket, classifies it, retrieves the relevant
 internal documentation, and drafts a grounded reply that a human agent edits before sending.
@@ -122,23 +123,37 @@ knowledge_base            (no foreign key to tickets on purpose:
 
 ## Running it
 
-### With Docker (one command)
+### Run with Docker
+
+Requires Docker with Compose. One command starts PostgreSQL (with pgvector), the API, and the web app.
 
 ```bash
 cp .env.example .env
 ```
 
-Set `DB_PASSWORD` and `JWT_SECRET` in `.env`, then:
+Open `.env` and replace `DB_PASSWORD` and `JWT_SECRET` with your own values. `.env` is git-ignored;
+only `.env.example` is committed. Then:
 
 ```bash
 docker compose up --build
 ```
 
-The app is on http://localhost:8080. Seed it with demo data:
+The app is on http://localhost:8080 and the API health check on http://localhost:3000/health.
+The database schema is created automatically on the first start. Load the demo data with:
 
 ```bash
 docker compose exec backend node src/db/seed.js --reset
 ```
+
+Stop everything with `docker compose down` (add `-v` to also delete the database volume).
+
+### Continuous integration
+
+Every push and pull request runs `.github/workflows/ci.yml`:
+
+1. **backend-tests** installs the backend dependencies and runs the test suite (`npm test`).
+2. **frontend-build** installs the frontend dependencies and builds the production bundle.
+3. **docker-build** builds both Docker images with `docker compose build`, after the first two pass.
 
 ### Without Docker
 
@@ -243,8 +258,8 @@ These are known and deliberate, not oversights:
   protection is the stronger design; `localStorage` was chosen to keep the auth flow readable.
 - **Classification is synchronous.** Creating a ticket waits for the model, so the request takes a few
   seconds. A queue with a background worker is the right answer at real volume.
-- **No automated tests.** The project was built to be understood step by step; a test suite is the
-  natural next phase.
+- **Test coverage is minimal.** The suite covers the auth, role, and error-handling middleware only
+  (`cd backend && npm test`). Routes, the database layer, and the AI services have no automated tests.
 - **Retrieval is article-level.** Long articles are embedded whole, which dilutes the vector. Chunking
   would improve recall on a larger knowledge base.
 - **Rate limiting is missing** on `/auth/login`, which leaves it open to online password guessing.
