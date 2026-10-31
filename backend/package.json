@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --env-file=.env --watch src/server.js",
-    "seed": "node --env-file=.env src/db/seed.js"
+    "seed": "node --env-file=.env src/db/seed.js",
+    "test": "node --test"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.124.0",
